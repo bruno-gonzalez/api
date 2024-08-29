@@ -39,6 +39,20 @@ app.get('/tecnologias', async ( req, res) => {
     res.status(200).json(stacks)
 })
 
+
+app.put('/tecnologias/:id', async (req, res) => {
+    await prisma.stack.update({
+        where: {
+            id: req.params.id
+        },
+        data: {
+            stack_name: req.body.stack_name,
+            img: req.body.img 
+        }
+    })
+    res.status(201).json(req.body)
+})
+
 app.listen(
     {
         host: '0.0.0.0',
