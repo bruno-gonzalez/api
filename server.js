@@ -8,6 +8,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.get('/', async ( req, res) => {
+    console.log("HOME")
+})
+
+
 app.post('/tecnologias', async (req, res) => {
     await prisma.stack.create({
         data: {
